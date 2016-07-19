@@ -122,7 +122,7 @@ int main() {
 	ptrPtrC = &ptrC;
 
 	cin >> c;
-	cout << *(*ptrPtrC);	// dereferecne of dereference
+	cout << *(*ptrPtrC);	// dereference of dereference
 
 	return 0;
 }
@@ -139,3 +139,66 @@ int main() {
 * Certain memory addresses outside the part of memory allocated to process by system, and dereferencing such addresses leads to runtime error (segmentation violation)
 * Memory location with address 0x0 is never within anyuser process' memory space
  * Dereferencing 0x0 will certainly cause program to crash
+
+## C++ pointers in action:
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	int m, n;
+	int * ptrInt;
+	int ** ptrPtrInt;
+	
+	ptrPtrInt = &ptrInt;
+	
+	cout << "Give m and n: "; cin >> m >> n;
+	
+	// Assigning ptrInt to the address of n
+	ptrInt = &n; 
+	cout << *(*ptrPtrInt) << endl;
+
+	// Assigning ptrInt to the address of m
+	ptrInt = &m; 
+	cout << *(*ptrPtrInt) << endl;
+
+	return 0;
+}
+```
+
+```c++
+#include<iostream>
+
+using namespace std;
+
+int main() {
+	int m, n;
+	int sum = 0;
+	
+	int *ptrInt;
+	int *ptrSum;
+	
+	// Assigning ptrSum to the address of sum
+	ptrSum = &sum;
+	
+	cout << "Give m and n : ";
+	cin >> m >> n;
+	
+	// Assigning ptrInt to the address of n
+	ptrInt = &n;
+	// Update sum by dereferencing ptrSum and ptrInt and add the two together
+	*ptrSum += *ptrInt;
+
+	// Assigning ptrInt to the address of m
+	ptrInt = &m;
+	// Update sum by dereferencing ptrSum and ptrInt and add the two together
+	*ptrSum += *ptrInt;
+	
+	// sum should be updated here
+	cout << "Sum : " << sum << endl;
+	
+	return 0;
+}
+```
