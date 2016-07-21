@@ -27,7 +27,7 @@ int main() {
 }
 ```
 
-For example, when we declare an int variable (**a** in this case), the program will allocate 4 bytes to store an int value in the memory, BUT only the address of the first byte in the memory would be used as the address of the variable. 
+For example, when we declare an int variable (```a``` in this case), the program will allocate 4 bytes to store an int value in the memory, BUT only the address of the first byte in the memory would be used as the address of the variable. 
 
 * a will have a location in the memory with the address range 0x00402-0x00405, but only 0x00402 is returned when we call
 ```c++
@@ -45,24 +45,24 @@ int *p;
 p = &a;
 ```
 
-**&a** is the address of **a** in memory.
+```&a``` is the address of ```a``` in memory.
 
-In general, if **x** is a variable of type **T**, T * is the type pointer to T and **&x** being an expression of type T * gives address of **x**
+In general, if ```x``` is a variable of type ```T```, T * is the type pointer to T and ```&x``` being an expression of type ```T *``` gives address of ```x```
 
-_If the memory location of **a** spans from 0x00402 to 00x00405, what is the address of **a**?_  
+_If the memory location of ```a``` spans from 0x00402 to 00x00405, what is the address of ```a```?_  
 That would be 0x00402 because only the address of the first among bytes is the value of the pointer.
 
 ![memory](https://s31.postimg.org/4bh0zy27f/Screen_Shot_2016_07_20_at_12_12_29_AM.png)
 
-According to the snapshot, the address of ptrA is 0x0040a and the content of ptrA, which is the address of **a**, is 0x00402
+According to the snapshot, the address of ptrA is 0x0040a and the content of ptrA, which is the address of ```a```, is 0x00402
 
 ### Can we have pointers to pointers?
 
-**ptrA** is a variable of type **int** (pointer to int), then **&ptrA** is the address of **ptrA**, which is of type _**pointer to** pointer int_
+```ptrA``` is a variable of type ```int``` (pointer to int), then ```&ptrA``` is the address of ```ptrA```, which is of type _**pointer to** pointer to int_
 
-_Note: we don't write (int *) *, but int **_
+_Note: we don't write ```(int *) *```, but ```int **```_
 
-We can take as far as we want. int **** means pointer to pointer to pointer to int
+We can take as far as we want. ```int ****``` means pointer to pointer to pointer to int
 
 ### A C++ program for printing addresses:
 
@@ -96,7 +96,7 @@ int main() {
 
 C++ provides a _content of_ operator: *
 
-If **ptrA** is a program variable of type _int *_, _*ptrA_ gives the integer stored at address given by **ptrA**
+If ```ptrA``` is a program variable of type ```int *```, ```*ptrA``` gives the integer stored at address given by ```ptrA```
 
 ```c++
 int main() {
@@ -109,7 +109,7 @@ int main() {
 }
 ```
 
-Since ptrA is a pointer to int, its value is address of an _integer (4 bytes)_, so read 4 bytes starting from ptrA
+Since ```ptrA``` is a pointer to ```int```, its value is address of an _integer (4 bytes)_, so read 4 bytes starting from ```ptrA```
 
 ### Can we have dereferences of dereferences?
 
@@ -131,7 +131,7 @@ int main() {
 ### How far can we nest dereferences?
 
 * No pre-specified limit
-* If x is a variable of type _int ****_, we can use up to four levels of dereferencing of x
+* If x is a variable of type ```int ****```, we can use up to four levels of dereferencing of x
 
 
 ## Caveats when dereferencing:
@@ -200,5 +200,45 @@ int main() {
 	cout << "Sum : " << sum << endl;
 	
 	return 0;
+}
+```
+
+## Pointers in function calls:
+
+There are two types of passing parameters to functions:
+* Call-by-value
+* Call-by-reference
+
+When a function is called, there will be activation records in call stack, which help manage local variables, passsing of parameters and also flow of control
+
+Passing pointers as function parameters will be call-by-value, but C++ allows passing references to pointers as well. Referencees to pointer-valued ```(int *, char *, ...)``` variables treated in the same way as references to variables of other basic data types (```int```, ```char```,...)
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+void swapByPtr(int *ptrX, int *ptrY);
+
+int main() {
+	int m, n;
+
+	cout >> m >> n;
+
+	swapByPtr(&m, &n);		// paramters are addresses, "call-by-value" with addresses
+
+	cout << "m: " << m << endl;
+	cout << "n: " << n << endl;
+
+	return 0;
+}
+
+void swapByPtr(int *ptrX, int *ptrY) {
+	int temp;
+	temp = *ptrX;		// accessing contents of memory location in activation record of main from swapByPtr
+	*ptrX = *ptrY;		// update contents of memory at address 0x749 with contents of memory at address 0x780
+	*ptrY = temp;		// accessing contents of memory location in activation record of main from swapByPtr
+
+	return;				// contents of m and n in activation record of main are swapped
 }
 ```
