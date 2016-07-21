@@ -209,9 +209,11 @@ There are two types of passing parameters to functions:
 * Call-by-value
 * Call-by-reference
 
+### Passing pointers as function parameters:
+
 When a function is called, there will be activation records in call stack, which help manage local variables, passsing of parameters and also flow of control
 
-Passing pointers as function parameters will be call-by-value, but C++ allows passing references to pointers as well. Referencees to pointer-valued ```(int *, char *, ...)``` variables treated in the same way as references to variables of other basic data types (```int```, ```char```,...)
+Passing pointers as function parameters will be call-by-value, but C++ allows passing references to pointers as well. References to pointer-valued ```(int *, char *, ...)``` variables treated in the same way as references to variables of other basic data types (```int```, ```char```,...)
 
 ```c++
 #include <iostream>
@@ -240,5 +242,107 @@ void swapByPtr(int *ptrX, int *ptrY) {
 	*ptrY = temp;		// accessing contents of memory location in activation record of main from swapByPtr
 
 	return;				// contents of m and n in activation record of main are swapped
+}
+```
+
+##### Conclusion:
+
+By passing pointers as function parameters, ```swapByPtr``` gets access to local variables of ```main```  
+Another way to share variables between caller and callee is passing parameters by reference.  
+In fact, when we pass parameters by reference in C++, after compilations pointers to parameters are actually passed. This will save us some untidy coding.
+
+### Passing by reference:
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+void swapByPtr(int *ptrX, int *ptrY);
+
+int main() {
+	int m, n;
+
+	cout >> m >> n;
+
+	swapByPtr(&m, &n);		// paramters are addresses, "call-by-value" with addresses
+	swapbyRef(m, n); 		// passing by references
+
+	cout << "m: " << m << endl;
+	cout << "n: " << n << endl;
+
+	return 0;
+}
+
+void swapByRef(int &x, int &y) {
+	int temp;
+	temp = x;
+	x = y;
+	y = temp;
+
+	return;
+}
+```
+Let's compare:
+
+```c++									
+void swapByPtr(int *ptrX, int *ptrY) {	
+	int temp;							
+	temp = *ptrX;	
+	*ptrX = *ptrY;	
+	*ptrY = temp;		
+						
+	return;				
+}
+
+void swapByRef(int &x, int &y) {
+	int temp;
+	temp = x;
+	x = y;
+	y = temp;
+
+	return;
+}
+```
+
+##### Conclusion:
+
+```swapByRef``` is cleaner to use.
+
+### Can a function return a pointer?
+
+Yes, but be careful so that the returned pointer does not point to a location in activation record of the function, because the activation record is freed when a function returns and dereferencing such an address in the freed activation record will cause the program to crash.
+
+Example of a function that returns an invalid pointer:
+
+```c++
+int *myFunc(int *ptrB);
+
+int main() {
+	int *a, b;
+	cout << "Give b: ";
+	cin >> b;
+	a = myFunc(&b);					// address of local variable in non-existent activation record of myFunc: BAD ADDRESS
+	cout << "a is: " << *a << endl;	// dereferencing a BAD ADDRESS
+
+	return 0;
+}
+
+int *myFunc(int *ptrB) {
+	int a;					// local variable in activation record of myFunc
+	a = (*ptrB)*(*ptrB);	// address of local variable in activation record of my Func
+	return &a;
+}
+```
+
+The correct way would be:
+
+```c++
+int *myFunc(int *ptrB) {
+	int a;					// local variable in activation record of myFunc
+	a = (*ptrB)*(*ptrB);
+	*ptrB = a;
+
+	return (ptrB);			// address of variable in activation record of main
 }
 ```
