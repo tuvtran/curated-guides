@@ -448,3 +448,99 @@ int main() {
 	return 0;
 }
 ```
+
+### Dynamic memory in action:
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+int *readQuizMarks(int n);
+
+int main() {
+	int numStudents;
+	int *qMarks;
+
+	cout << "Given student count: " << endl;
+	cin >> numStudents;
+	cout << "Give marks of students " << endl;
+
+	qMarks = readQuizMarks(numStudents);
+
+	if (qMarks == NULL) {
+		return -1;
+	}
+
+	int min = qMarks[0];
+	int max = qMarks[0];
+
+	for (int i = 1; i < numStudents; i++) {
+		if (qMarks[i] < min) {
+			min = qMarks[i];
+		}
+
+		if (qMarks[i] > max) {
+			max = qMarks[i];
+		}
+	}
+
+	cout << "Min: " << min << endl;
+	cout << "Max: " << max << endl;
+
+	return 0;
+}
+
+int *readQuizMarks(int n) {
+	int *marks;
+	int *temp;
+
+	marks = new int[n];
+	temp = new int[n];
+
+	if (marks == NULL || temp == NULL) {
+		return NULL;
+	}
+
+	for (int i = 0; i < n; i++) {
+		cin >> marks[i];
+		temp[i] = marks[i] + 10;
+	}
+
+	if (temp != NULL) {
+		delete[] temp;
+	}
+
+	return marks;
+}
+```
+
+### Deallocation of dynamic memory:
+
+Memory dynamically allocated by a function is **not automatically de-allocated (freed)** when the function returns. Unless explicitly de-allocated, dynamically allocated memory persists until program ends execution. C++ provides a special construct to explicitly de-allocate dynamically allocated memory:
+
+```c++
+// For variables:
+// Allocation:
+T *myVar;
+myVar = new T;
+// Deallocation:
+delete myVar;
+
+// For arrays:
+// Allocation:
+T *myArray;
+myArray = new T[n];
+// Deallocation:
+delete[] myArray;
+```
+
+Note:  
+* Always deallocate dynamically allocated memory once you have no further use of it
+* Check for valid address before deallocating memory
+```c++
+if (myArray != NULL) {
+	delete[] myArray;
+}
+```
+* Deallocating memory at address 0x0 (NULL) will cause program to crash.
