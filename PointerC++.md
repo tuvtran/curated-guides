@@ -4,7 +4,12 @@
 * MOOC **_CS101.2x Object-Oriented Programming_** by IIT Bombay
 
 ##### Table of Contents:
-
+1. [Memory and Addresses in C++](#memory-and-addresses-in-c)
+2. [Pointer as address of a variable](#pointer-as-address-of-a-variable)
+3. [Access content at a given address](#access-content-at-a-given-address)
+4. [C++ pointers in action](#c-pointers-in-action)
+5. [Pointers in function calls](#pointers-in-function-calls)
+6. [Pointers and dynamic memory](#pointers-and-dynamic-memory)
 
 ## Memory and Addresses in C++:
 
