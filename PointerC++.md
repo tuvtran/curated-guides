@@ -346,3 +346,105 @@ int *myFunc(int *ptrB) {
 	return (ptrB);			// address of variable in activation record of main
 }
 ```
+
+## Pointers and Dynamic Memory:
+
+### Overview:
+
+* Operating system allocates a part of main memory for use by a process
+* Divided into:
+ * **Code segment**: stores executable instructions in program
+ * **Data segment**: For dynamically allocated data
+ * **Stack segment**: call stack
+
+Local variables/arrays of a function must be statically declared in function. Their memory is allocated in activation record of function and resides in the stack segment. However, they cease to exist once function ends and controls returns to the caller (i.e. main).
+
+One question arises: what if the size of a local array is input-dependent? For example, we read the number of students in a calss and store marks of all students in an ```int``` array. Or what if memory location(s) allocated in a function must be accessed after the function returns?
+
+Therefore, we need a mechanism for allocating memory allocations **dynamically**. Features of dynamic memory allocation:
+* Allocation at runtime
+* Allocation could depend on values of expressions read/computed
+
+Let's look at some code:
+
+```c++
+int main() {
+	int numStudents;
+	cin >> numStudents;
+
+	// Allocate an int array A
+	// of size numStudents
+	// to store quiz marks
+}
+```
+
+We can see that ```int numStudents``` is known at compile-time, but the array ```A``` is unknown at compile time, so the program cannot reserve space for array ```A``` when activation record of ```main``` is created in stack segment. So... where should this memory space come from?
+
+It turns out that C++ provides a special construct for dynamically allocating memory in heap (data segment)
+
+### Dynamica memory allocation in C++:
+
+C++ provides a special construct for dynamically allocating memory in heap (data segment):
+
+```c++
+int main() {
+	int numStudents;
+	int *A;
+	
+	cin >> numStudents;
+	A = new int[numStudents];
+
+	// Store quiz marks in A
+
+	return 0;
+}
+```
+
+![dynamic memory](https://s31.postimg.org/oggp481t7/Screen_Shot_2016_07_24_at_3_38_58_PM.png)
+
+Then,
+
+```c++
+A[0] = 10;
+A[1] = 15;
+```
+
+So how are addresses of A[0] and A[1] calculated?
+
+The compiler knows that A is pointer to an integer that is the first in an array of integers from ```A = new int[numStudents];```. Each element of the array is of ```int``` data type and each ```int``` takes 4 consecutive memory allocations (bytes). Therefore, address of ```A[0]``` is (A + 0) and that of ```A[i]``` is (A + (4*i)).
+
+To dynamically allocate memory for a variable of type T:
+
+```c++
+T *myVarPtr;
+myVarPtr = new T;
+```
+
+The variable is then accessed as ```*myVarPtr```.
+
+To dynamically allocate memory for an array of n elements of type T:
+
+```c++
+T *myArray;
+myArray = new T[n];
+```
+
+The ```new``` keyword returns to pointer to T in both cases. Array of type T treated as a variable of type T* can be indexed using [...].  
+Most often, ```new``` will successfully allocate requested memory from heap and return address to the first allocated byte. However, we cannot take ```new``` for granted because in some cases 0x0 (also called NULL pointer) may be returned. Therefore, we should always check if ```new``` has returned an address other than 0x0 (NULL) before dereferencing that address.
+
+```c++
+int main() {
+	int numStudents;
+	int *A;
+
+	cin >> numStudents;
+	A = new int[numStudents];
+
+	if (A != NULL) {
+		A[0] = 10;
+		A[1] = 15;
+	}
+
+	return 0;
+}
+```
