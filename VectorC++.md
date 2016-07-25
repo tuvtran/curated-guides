@@ -8,10 +8,10 @@
 <br>
 
 ##### Table of Contents:
-1. [What the heck is Vectors in C++](#What-the-heck-is-Vectors-in-C)
-2. [Isnt vector a data type?](#Wait-,-but-I-cant-vector-name_of_variable-!-Thats-not-a-data-type)
-3. [How do we use vectors ?](#How-do-we-use-vectors)
-4. [Advanced operations on vectors](#Advanced-operations-on-vectors)
+1. [What the heck is Vectors in C++](#what-the-heck-is-vectors-in-C)
+2. [Isnt vector a data type?](#wait-,-but-i-cant-vector-name_of_variable-!-thats-not-a-data-type)
+3. [How do we use vectors ?](#how-do-we-use-vectors)
+4. [Advanced operations on vectors](#advanced-operations-on-vectors)
 
 ## What the heck is Vectors in C++ ? 
 
