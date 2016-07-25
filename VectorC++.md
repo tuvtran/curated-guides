@@ -38,7 +38,7 @@ So yeah, now you understand that vector is **standardized** ! And it's much more
 
 That's a good question! Vectors are meant to be **easy to use** so no worry here.
 
-1. Firstly, you need to call the vector from the header file.
+* Firstly, you need to call the vector from the header file.
 
 ```c++
 #include <vector>
@@ -49,7 +49,7 @@ using namespace std
 ```
 because vetor belongs to Standard Template Library.
 
-2. Secondly, let's consider the syntax of initializing a vector.
+* Secondly, let's consider the syntax of initializing a vector.
 
 ```c++
 vector<int> A;
@@ -75,7 +75,7 @@ vector<int> B (A);
 
 **Now this one will copy the whole vector A to vector B.**
 
-3. Thirdly, learn how to access vector elements.
+* Thirdly, learn how to access vector elements.
 
 We can refer to individual elements in the vector using square brackets to provide a subscript or index, as shown below:
 
@@ -423,7 +423,7 @@ Element 6: 5
 * **Vector.swap(vector2)** swap the content of two vectors.
 * **Vector.front()** accesses the first element.
 * **Vector.back()** accesses the last element.
-* **Vector.capacity()** returns the number of elements that the vector can hold before more space is allocated. It is very important to remember here that, unlike raw arrays, most of the memory management for vectors is performed silently during construction or manipulation of the container. **The **reserve()** method only allocates memory, but leaves it uninitialized. It only affects **capacity()**, but **size()** will be unchanged.** 
+* **Vector.capacity()** returns the number of elements that the vector can hold before more space is allocated. It is very important to remember here that, unlike raw arrays, most of the memory management for vectors is performed silently during construction or manipulation of the container. The **reserve()** method only allocates memory, but leaves it uninitialized. It only affects **capacity()**, but **size()** will be unchanged. 
 Consider this : 
 
 ```c++
