@@ -2,10 +2,16 @@
 
 <br>
 
-![](http://i.imgur.com/iFBKVZI.png)
+         ![](http://i.imgur.com/iFBKVZI.png)
 ##### Source : My own experience and knowledge after studying in college and reading various online material. Examples will be linked to the original site.
 
 <br>
+
+##### Table of Contents:
+1. [What the heck is Vectors in C++](#What-the-heck-is-Vectors-in-C++-?)
+2. [Isnt vector a data type?](#Wait-,-but-I-cant-vector-+-name_of_variable-!-Thats-not-a-data-type-?)
+3. [How do we use vectors ?](#How-do-we-use-vectors-?)
+4 .[Advanced operations on vectors](#Advanced-operations-on-vectors)
 
 ## What the heck is Vectors in C++ ? 
 
@@ -47,9 +53,9 @@ vector<int> A;
 ```
 Easily guess that one out , the code follows this rule : vector<data_type> variable_name.
 
-Vector doesnt require you to add the size of the data (it's dynamic).But if you'd like to, -> vector<data_type> variable_name (number_of_elements).
+Vector doesnt require you to add the size of the data (it's dynamic).But if you'd like to, -> **vector<data_type> variable_name (number_of_elements)**.
 
-Oh, and if you'd like the intial vector to store something, you are welcome to add in -> vector<data_type> variable_name  (number_of_elements , something_to_fulfill)
+Oh, and if you'd like the intial vector to store something, you are welcome to add in -> **vector<data_type> variable_name  (number_of_elements , something_to_fulfill)**
 
 For example :
 
@@ -77,7 +83,7 @@ A[3];
 
 Please note that if you initially define the vector to have n elements , **you cannot access the n+1 elements** the program will crash!!!!
 
-A safer way to access elements is by using vector.at(index). If you go out of scope, this will throw an exception and exceptions are useful when you know how to handle them.
+A safer way to access elements is by using **vector.at(index)**. If you go out of scope, this will throw an exception and exceptions are useful when you know how to handle them.
 
 ```c++
 vector<int> A (10,5);
@@ -115,14 +121,14 @@ int main(int argc, char** argv) {
 
 ### Input 
 
-To input data into vector, use Vector.push_back(data). An empty vector will gradually put data in as you use this function more and more. In details, if i have n elements in the vector, whenever i call vector.push_back(data), the vector will look if it has any empty space inside. If yes, put that data in. If no, make new space and put that data in ( it's dynamic !!! remember? ). 
+To input data into vector, use **Vector.push_back(data)**. An empty vector will gradually put data in as you use this function more and more. In details, if i have n elements in the vector, whenever i call **vector.push_back(data)**, the vector will look if it has any empty space inside. If yes, put that data in. If no, make new space and put that data in ( it's dynamic !!! remember? ). 
 
 ```c++
 vector<int> A(10); 
 A.push_back(25); // will add 25 to A[0]
 ```
 
-Big example incoming. This will demonstrate how push_back work in action. Try to guess the purpose of the codes below : 
+Big example incoming. This will demonstrate how **push_back** work in action. Try to guess the purpose of the codes below : 
 
 ```c++
 #include <iostream>
@@ -193,7 +199,7 @@ Press any key to continue . . .
 
 ### Size
 
-The size of a vector is accessed via vector.size(). 
+The size of a vector is accessed via **vector.size()**. 
 
 ```c++
 vector<int> A(10);
@@ -235,13 +241,13 @@ void showValues(vector<int> vect)
 }  
 ```
 
-The function shows you how vector size can be put in action. It is very useful when you want to make a loop that traverse the whole vector or control the elements of a vector (just like an array).
+The function shows you how vector **size** can be put in action. It is very useful when you want to make a loop that traverse the whole vector or control the elements of a vector (just like an array).
 
 ### Output
 
-To get an element out of the vector, we use vector.pop_back(). Please note that when we use pop_back(), the last value of the vector will get popped out. Therefore, the vector now no longer stores that data and it is important to remember this as we should avoid direct access to this element afterwards.
+To get an element out of the vector, we use **vector.pop_back()**. Please note that when we use **pop_back()**, the last value of the vector will get popped out. Therefore, the vector now no longer stores that data and it is important to remember this as we should avoid direct access to this element afterwards.
 
-Let's consider this example so that you can understand how vector.pop_back() is used 
+Let's consider this example so that you can understand how **vector.pop_back()** is used 
 
 ```c++
 using namespace std;
@@ -289,14 +295,14 @@ Press any key to continue . . .
 
 ### Erase
 
-The Vector.erase(index) will erase the desired element. For example:
+The **Vector.erase(index)** will erase the desired element. For example:
 
 ```c++
 vector<int> A(10,5);
 A.erase(3); // will delete element at index 3 ( the fourth element in the vector)
 ```
 
-Or you can delete many elements at once by using vector.erase(begin, end). For example:
+Or you can delete many elements at once by using **vector.erase(begin, end)**. For example:
 
 ```c++
 vector<int> A(10,5);
@@ -305,7 +311,7 @@ A.erase(3,5); //will delete element at index 3, 4, 5 ( the fourth, fifth, sixth 
 
 ### Clear 
 
-If you want to completely delete the whole vector, or return it to its original state where no value is assigned in each element, usually your brain comes up with pop_back() or a loop deleting each value ( assume you desire to apply what you have learnt above ! ) . However, that costs time and generate unnecessary lines of codes where we can just use vector.clear() to clear all the vector data.
+If you want to completely delete the whole vector, or return it to its original state where no value is assigned in each element, usually your brain comes up with **pop_back()** or a loop deleting each value ( assume you desire to apply what you have learnt above ! ) . However, that costs time and generate unnecessary lines of codes where we can just use **vector.clear()** to clear all the vector data.
 
 ```c++
 #include <iostream>
@@ -336,7 +342,7 @@ Press any key to continue . . .
 ```
 
 Simple as eating a cake, isn't it?
-Plus, if you want to check whether the current vector is empty or not, you can call out vector.empty(). Here's a quick look at how to implement it : 
+Plus, if you want to check whether the current vector is empty or not, you can call out **vector.empty()**. Here's a quick look at how to implement it : 
 
 ```c++
 if(A.empty() == true){
@@ -345,7 +351,7 @@ if(A.empty() == true){
 ```
 ### Resize
 
-This vector.resize(size , new_default_element) helps you resize a vector (and set new default . Consider the below example to see how resizing is put into action :
+This **vector.resize(size , new_default_element)** helps you resize a vector (and set new default . Consider the below example to see how resizing is put into action :
 
 ```c++
 #include <iostream>
@@ -407,13 +413,13 @@ Element 6: 5
 
 ### Other good stuffs
 
-* Vector.begin() returns an iterator to the start of the vector.
-* Vector.end() returns an iterator to the end of the vector.
-* Vector.at(index) returns the element at some index in the vector.
-* Vector.swap(vector2) swap the content of two vectors.
-* Vector.front() accesses the first element.
-* Vector.back() accesses the last element.
-* Vector.capacity() returns the number of elements that the vector can hold before more space is allocated. It is very important to remember here that, unlike raw arrays, most of the memory management for vectors is performed silently during construction or manipulation of the container. **The reserve() method only allocates memory, but leaves it uninitialized. It only affects capacity(), but size() will be unchanged.** 
+* **Vector.begin()** returns an iterator to the start of the vector.
+* **Vector.end()** returns an iterator to the end of the vector.
+* **Vector.at(index)** returns the element at some index in the vector.
+* **Vector.swap(vector2)** swap the content of two vectors.
+* **Vector.front()** accesses the first element.
+* **Vector.back()** accesses the last element.
+* **Vector.capacity()** returns the number of elements that the vector can hold before more space is allocated. It is very important to remember here that, unlike raw arrays, most of the memory management for vectors is performed silently during construction or manipulation of the container. **The **reserve()** method only allocates memory, but leaves it uninitialized. It only affects **capacity()**, but **size()** will be unchanged.** 
 Consider this : 
 
 ```c++
@@ -447,6 +453,9 @@ Now you see the difference between capacity and size although they seem to be si
 ![](https://www.securecoding.cert.org/confluence/download/attachments/20087026/vector-clipped.jpg?version=1&modificationDate=1239994411000&api=v2)
 
 <br>
+
+## END OF GUIDES. HAVE FUN WITH VECTORS! 
+
 
 ##### Reference for examples 
 [1](http://www.dreamincode.net/forums/topic/33631-c-vector-tutorial/),[2](http://diendan.congdongcviet.com/threads/t5227::cach-su-dung-vector-danh-cho-newbie-trong-lap-trinh-cpp.cpp),[3](http://www.tutorialspoint.com/cplusplus/cpp_stl_tutorial.htm)
