@@ -13,6 +13,7 @@
 3. [How do we use vectors ?](#id-section3)
 4. [Advanced operations on vectors](#id-section4)
 <div id='id-section1'/>
+
 ## What the heck is Vectors in C++ ? 
 
 In any kinds of programming languages, we can store various data of the same type in an array. However, basic types of array never serve what we need sufficiently. It is either hard to operate since we are coding from the ground up or impossible to implement due to some restrictions (i.e: hardware, performance....). Smart people, therefore came up with dynamically allocated array ( read more [here](https://github.com/tuvttran/curated-guides/blob/master/PointerC%2B%2B.md#pointers-and-dynamic-memory) ) but still, find their codes not relevant enough sometimes and the process of utilizing dynamically allocated array prone to errors, hard to maintain....
@@ -23,6 +24,7 @@ And here comes the **Vector** .
 
 To sum up, vectors are like dynamic array, but much much more powerful and easier to use.
 <div id='id-section2'/>
+
 ## Wait, but I can't vector + name_of_variable! That's not a data type?
 
 No. Vector is built in C++ Standard Template Library ( [C++ STL](https://en.wikipedia.org/wiki/Standard_Template_Library) ).
@@ -31,6 +33,7 @@ In short (because this guide is not about STL), C++ STL is a powerful library of
 
 So yeah, now you understand that vector is **standardized** ! And it's much more than a data type.
 <div id='id-section3'/>
+
 ## How do we use vectors ?
 
 That's a good question! Vectors are meant to be **easy to use** so no worry here.
@@ -117,6 +120,7 @@ int main(int argc, char** argv) {
 }
 ```
 <div id='id-section4'/>
+
 ## Advanced operations on vectors
 
 ### Input 
