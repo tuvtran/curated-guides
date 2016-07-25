@@ -2,7 +2,7 @@
 
 <br>
 
-![](http://imgur.com/a/c6xC7)
+![](http://i.imgur.com/iFBKVZI.png)
 ##### Source : My own experience and knowledge after studying in college and reading various online material. Examples will be linked to the original site.
 
 <br>
