@@ -2,6 +2,7 @@
 
 <br>
 
+![](http://imgur.com/a/c6xC7)
 ##### Source : My own experience and knowledge after studying in college and reading various online material. Examples will be linked to the original site.
 
 <br>
@@ -112,7 +113,7 @@ int main(int argc, char** argv) {
 
 ## Advanced operations on vectors
 
-1. Input 
+### Input 
 
 To input data into vector, use Vector.push_back(data). An empty vector will gradually put data in as you use this function more and more. In details, if i have n elements in the vector, whenever i call vector.push_back(data), the vector will look if it has any empty space inside. If yes, put that data in. If no, make new space and put that data in ( it's dynamic !!! remember? ). 
 
@@ -190,7 +191,7 @@ Employee #3: $1019.25
 Press any key to continue . . .
 ```
 
-2. Size
+### Size
 
 The size of a vector is accessed via vector.size(). 
 
@@ -236,7 +237,7 @@ void showValues(vector<int> vect)
 
 The function shows you how vector size can be put in action. It is very useful when you want to make a loop that traverse the whole vector or control the elements of a vector (just like an array).
 
-3. Output
+### Output
 
 To get an element out of the vector, we use vector.pop_back(). Please note that when we use pop_back(), the last value of the vector will get popped out. Therefore, the vector now no longer stores that data and it is important to remember this as we should avoid direct access to this element afterwards.
 
@@ -286,7 +287,7 @@ The size of values is now 0
 Press any key to continue . . .
 ```
 
-4. Erase
+### Erase
 
 The Vector.erase(index) will erase the desired element. For example:
 
@@ -302,7 +303,7 @@ vector<int> A(10,5);
 A.erase(3,5); //will delete element at index 3, 4, 5 ( the fourth, fifth, sixth one)
 ```
 
-5. Clear 
+### Clear 
 
 If you want to completely delete the whole vector, or return it to its original state where no value is assigned in each element, usually your brain comes up with pop_back() or a loop deleting each value ( assume you desire to apply what you have learnt above ! ) . However, that costs time and generate unnecessary lines of codes where we can just use vector.clear() to clear all the vector data.
 
@@ -342,7 +343,7 @@ if(A.empty() == true){
        cout << "No values in A \n";
 } 
 ```
-6. Resize
+### Resize
 
 This vector.resize(size , new_default_element) helps you resize a vector (and set new default . Consider the below example to see how resizing is put into action :
 
@@ -403,7 +404,9 @@ Element 4: 5
 Element 5: 5
 Element 6: 5   
 ```
-7. Other good stuffs
+
+### Other good stuffs
+
 * Vector.begin() returns an iterator to the start of the vector.
 * Vector.end() returns an iterator to the end of the vector.
 * Vector.at(index) returns the element at some index in the vector.
@@ -441,6 +444,7 @@ The output here is :
 ```
 
 Now you see the difference between capacity and size although they seem to be similar to each other.
+![](https://www.securecoding.cert.org/confluence/download/attachments/20087026/vector-clipped.jpg?version=1&modificationDate=1239994411000&api=v2)
 
 <br>
 
