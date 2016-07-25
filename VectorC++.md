@@ -169,7 +169,7 @@ int main()
       payRate.push_back(tempRate);  // Add data in vector payRate
    }
 
-   //In ra giá trị 
+   //Output data
    cout << "Here is the gross pay for each employee:\n";
    cout << fixed << showpoint << setprecision(2);
    for (index = 0; index < numEmployees; index++)
@@ -355,7 +355,7 @@ if(A.empty() == true){
 ```
 ### Resize
 
-This **vector.resize(size , new_default_element)** helps you resize a vector (and set new default . Consider the below example to see how resizing is put into action :
+This **vector.resize(size , new_default_element)** helps you resize a vector (and set new default . Be careful when play with resize as it will result in loss of data if you seize down the vector. Consider the below example to see how resizing is put into action :
 
 ```c++
 #include <iostream>
@@ -456,11 +456,10 @@ The output here is :
 Now you see the difference between capacity and size although they seem to be similar to each other.
 ![](https://www.securecoding.cert.org/confluence/download/attachments/20087026/vector-clipped.jpg?version=1&modificationDate=1239994411000&api=v2)
 
-<br>
+----------
 
-## END OF GUIDES. HAVE FUN WITH VECTORS! 
+## !END OF GUIDES. HAVE FUN WITH VECTORS! 
 
 
-##### Reference for examples 
-[1](http://www.dreamincode.net/forums/topic/33631-c-vector-tutorial/),[2](http://diendan.congdongcviet.com/threads/t5227::cach-su-dung-vector-danh-cho-newbie-trong-lap-trinh-cpp.cpp),[3](http://www.tutorialspoint.com/cplusplus/cpp_stl_tutorial.htm)
+##### Reference for examples :[1](http://www.dreamincode.net/forums/topic/33631-c-vector-tutorial/),[2](http://diendan.congdongcviet.com/threads/t5227::cach-su-dung-vector-danh-cho-newbie-trong-lap-trinh-cpp.cpp),[3](http://www.tutorialspoint.com/cplusplus/cpp_stl_tutorial.htm)
 
