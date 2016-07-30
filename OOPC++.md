@@ -156,3 +156,47 @@ class myString {
 		}
 };
 ```
+
+## Operator Overloading:
+
+C++ provides us with a way to override the default operators such as +, -, /, * when interacting with objects.
+
+Suppose @ is an infix operator (e.g. +, -, /, *, %,...), in C++, the expression X@Y is equivalent to X.operator@(Y)
+
+Defining custom ooperators for ```Vector```
+
+```c++
+class Vector {
+	private:
+		double x, y, z;
+	public:
+		/*
+			Constructor
+			Destructor
+			Copy constructor
+		*/
+		Vector operator+(const Vector &b) const {		// use const because function cannot change the receiver object
+			return Vector(x + b.x, y + b.y, z + b.z);
+		}	
+
+		Vector operator*(const double factor) const { 
+			return Vector(x*factor, y*factor, z*factor);
+		}
+
+		// copy assignment operator
+		Vector& operator=(const Vector &rhs) {
+			x = rhs.x;
+			y = rhs.y;
+			z = rhs.z;
+
+			// "this" denotes a pointer to the receiver object
+			return *this;
+		}
+};
+
+// Non-member operator function
+Vector operator*(const double factor, const Vector &b) {
+	// reference to the member function
+	return (b * factor);
+}
+```
