@@ -201,7 +201,7 @@ Vector operator*(const double factor, const Vector &b) {
 }
 ```
 
-## Friend functions:
+## Friend functions and classes:
 
 Normally, private members of a class are accessible only to member functions of a class. However, sometimes we may want to bypass this by allowing access to functions or classes lying beyond the scope of the current function.
 
@@ -221,9 +221,16 @@ class Student {
 		
 		// this friend function could be in public or private section of class Student
 		friend double getSumGrades(Student &s1);
+
+		// we need friend classes when various members of a class may need access to private members of the current class
+		friend class StudentGrader;
 };
 
 double getSumGrades(Student &s1) {
 	// function content
 }
+
+class Student Grader {
+	// content here	
+};
 ```
