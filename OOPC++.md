@@ -200,3 +200,30 @@ Vector operator*(const double factor, const Vector &b) {
 	return (b * factor);
 }
 ```
+
+## Friend functions:
+
+Normally, private members of a class are accessible only to member functions of a class. However, sometimes we may want to bypass this by allowing access to functions or classes lying beyond the scope of the current function.
+
+```c++
+class Student {
+	private:
+		int grades[10];
+	public:
+		int age;
+		string name;
+
+		/*
+			constructor
+			destructor
+			...
+		*/	
+		
+		// this friend function could be in public or private section of class Student
+		friend double getSumGrades(Student &s1);
+};
+
+double getSumGrades(Student &s1) {
+	// function content
+}
+```
