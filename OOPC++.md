@@ -234,3 +234,28 @@ class Student Grader {
 	// content here	
 };
 ```
+
+## Static Data Members:
+
+Note: instantiating static members right after class definition
+
+```c++
+class Point {
+	private:
+		double x, y;
+	public:
+		static int count;
+
+		Point() {
+			count++;
+			return;
+		}	
+
+		Point(double a, double b): x(a), y(b) {
+			count++;
+			return;
+		}
+};
+
+int Point::count = 0;			// scope resolution operator
+```
