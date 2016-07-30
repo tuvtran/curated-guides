@@ -259,3 +259,80 @@ class Point {
 
 int Point::count = 0;			// scope resolution operator
 ```
+
+## Inheritance:
+
+```c++
+class A : public B {
+
+}
+```
+
+### Access Control in Inheritance:
+
+| Base Class Member | public       | protected    | private      |
+|-------------------|--------------|--------------|--------------|
+| private           | inaccessible | inaccessible | inaccessible |
+| protected         | protected    | protected    | private      |
+| public            | public       | protected    | private      |
+
+### Access mthods of base class using derived class:
+
+```c++
+class base {
+	// content	
+
+	void printInfo() {
+		cout << "Print info from base class" << endl;;
+	}
+};
+
+class subBase: public base {
+	public:
+		// ...
+
+		void printInfo() {
+			// print info from base class
+			base::printInfo();
+			cout << "Print info from sub base class" << endl;;		
+			return;
+		}
+}
+```
+
+### Constructor for derived class:
+
+Without default constructor for base class (parameterised constructor) and without explicit base constructor invocation in derived class, there would be an **error**
+
+```c++
+class base {
+	// content	
+
+	void printInfo() {
+		cout << "Print info from base class" << endl;;
+	}
+};
+
+class subBase: public base {
+	public:
+		// ...
+		
+		// Either
+		subBase(int x): base(x) {
+			// content
+		}
+
+		// or specifying a default constructor in the base class
+
+		void printInfo() {
+			// print info from base class
+			base::printInfo();
+			cout << "Print info from sub base class" << endl;;		
+			return;
+		}
+}
+```
+
+Note:
+* Constructor of parent gets call first, while destructor of children gets called first
+* Derived classes **do not** inherit assignment operator from the base class
