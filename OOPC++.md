@@ -393,3 +393,95 @@ class D : public B, public C {
 ```
 
 In the example above, class D will have the constructor of class A called, not class B or C
+
+## Inline Member Functions:
+
+Inline member functions are functions defined inside the class definition. They are convenient if function definition contains a few lines. However, long and complicated members functions make defining member functions in class definition cumbersome. C++ allows member functions to be declared in a class definition, but defined outside the class definition. This would be very useful if different member functions are developed by different members of team.
+
+```c++
+class V3 {
+	private:
+		double x, y, z;
+		double length() const;
+	public:
+		// Inline member functions
+		V3(double p = 0.0, double q = 0.0, double r = 0.0);
+		V3 operator+(const V3 &b) const;
+		V3 operator*(double factor) const;
+		~V3() {
+			return;
+		}
+};
+
+// Non-inline member functions
+V3::V3(double p, double q, double r): x(p), y(q), z(r) {
+	return;
+}
+
+V3 V3::operator+(const V3 &b) const {
+	return V3(x + b.x, y + b.y, z + b.z);
+}
+
+V3 V3::operator*(double factor) const {
+	return V3(x*factor, y*factor, z*factor);
+}
+
+double V3::length() const {
+	return sqrt(x*x + y*y + z*z);
+}
+```
+
+## Template Class:
+
+Template classes provide a mechanism for **generic programming**. Template is a schema for creating several classes that differ only in data types of members and some parameters.
+
+```c++
+template <class T> class Queue {
+	private:
+		int front, nWaiting;	
+		T elements[100];
+	public:
+		Queue() {
+			front = 0;
+			nWaiting = 0;
+			return;
+		}
+
+		~Queue() {
+			return;
+		}
+
+		bool insert(T value);
+		bool remove(T &value);
+};
+
+template <class T> bool Queue<T>::insert(T value) {
+	if (nWaiting == 100) {
+		cout << "Queue is full!!" << endl;
+		return false;
+	} else {
+		elements[(front + nWaiting) % 100] = value;
+		nWaiting++;
+		return true;
+	}
+}
+
+template <class T> bool Queue<T>::remove(T &value) {
+	if (nWaiting == 0) {
+		cout << “Q Empty!” << endl;
+		return false;
+	}
+	else {
+		value = elements[front];
+		front = (front + 1)%100; 
+		nWaiting--; 
+		return true;
+	}
+}
+
+int main() {
+	// instantiating template classes
+	Queue<int> intQ;
+	Queue<Vector> vectorQ;
+}
+```
