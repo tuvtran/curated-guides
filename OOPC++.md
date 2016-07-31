@@ -336,3 +336,60 @@ class subBase: public base {
 Note:
 * Constructor of parent gets call first, while destructor of children gets called first
 * Derived classes **do not** inherit assignment operator from the base class
+* Object of derived class can be assigned to object of base class (although there might be a loss of information)
+* We cannot assign object of base class to object of derived class, since essentially they are two different objects, but this can be circumscribed with the following
+```c++
+ExampleClass& operator=(const ExampleClass& obj) {
+     ExampleBaseClass::operator=(obj);
+     return *this;
+}
+```
+* If we want derived class to inherit assignment operator
+```c++
+class savings : public base {
+	public:
+		int age;
+		long int ATM;
+		savings(int x, int y): base(x), age(y) {
+			return;
+		}	
+		using base::operator=;
+};
+```
+
+### Multiple Inheritance:
+
+```c++
+class C : public A, public B {
+	// content here
+};
+```
+
+### Diamond Inheritance:
+
+* There can be ambiguity as to which constructor of the two middle classes will get called
+* There is only one constructor called, which resides in the last class
+
+```c++
+class A {
+	// content	
+};
+
+class B : virtual public A {
+	// content	
+};
+
+class C : virtual public A {
+	// content
+};
+
+class D : public B, public C {
+	// content
+	public:
+		D() {
+			A();
+		}
+};
+```
+
+In the example above, class D will have the constructor of class A called, not class B or C
