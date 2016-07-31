@@ -11,8 +11,10 @@ I want to share what I have found to everyone, so that knowledge would be spread
 2. [Introduction to C++][2]
 3. [Sublime Text tricks and tips][3]
 4. [Vector in C++][4] - written by [Luong Vo](https://github.com/VoLuong)
+5. [Object-Oriented Programming in C++][5]
 
 [1]: https://github.com/tuvttran/curated-guides/blob/master/JavaPrimer.md
 [2]: https://github.com/tuvttran/curated-guides/blob/master/PointerC%2B%2B.md
 [3]: https://github.com/tuvttran/curated-guides/blob/master/sublime-tricks.md
 [4]: https://github.com/tuvttran/curated-guides/blob/master/VectorC%2B%2B.md
+[5]: https://github.com/tuvttran/curated-guides/blob/master/OOPC%2B%2B.md
